@@ -14,7 +14,12 @@ class LinkedList {
     }
 
     prepend(value) {
-
+        //make new node
+        //make new node.next = head.next
+        //make this.head.nextNode = this newNode
+        let newNode = new Node(value)
+        newNode.nextNode = this.head.nextNode
+        this.head.nextNode = newNode
     }
 
     size() {
@@ -51,7 +56,7 @@ class LinkedList {
 }
 
 class Node {
-    constructor(value, nextNode) {
+    constructor(value) {
         this.value === null
         this.nextNode === null
     }
