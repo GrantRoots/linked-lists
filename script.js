@@ -1,26 +1,58 @@
-const main = document.querySelector('#main')
-const form = document.querySelector('form')
-const city = document.querySelector('#city')
+class LinkedList {
+    constructor() {
+        this.head = new Node()
+        this.node = this.head
+    }
 
-async function getWeather(city) {
-    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=MR7UXGQFMN6DTQ5GDNSC4WSGD`)
-    const data = await response.json()
-    console.log(data, 'this is the data')
-    console.log(data.address, 'this is the city')
+    append(value) {
+        let newNode = new Node(value)
+        //get to null in list then append to last item
+        while (this.nextNode !== null) {
+            this.node = this.nextNode
+        }
+        this.nextNode = newNode
+    }
 
-    main.textContent = data.resolvedAddress
-    main.innerHTML += `, Temp : ${data.currentConditions.temp}`
-    main.textContent += `, Feels like : ${data.currentConditions.feelslike}`
-    main.textContent += `, Humidity : ${data.currentConditions.humidity}%`
+    prepend(value) {
 
-    //display
-    // temp, 
+    }
+
+    size() {
+
+    }
+
+    head() {
+
+    }
+
+    tail() {
+
+    }
+
+    at(index) {
+
+    }
+
+    pop() {
+
+    }
+
+    contains(value) {
+
+    }
+    
+    find(value) {
+
+    }
+
+    toString() {
+
+    }
 }
-getWeather('london')
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const searchedCity = city.value
-
-    getWeather(searchedCity)
-})
+class Node {
+    constructor(value, nextNode) {
+        this.value === null
+        this.nextNode === null
+    }
+}
