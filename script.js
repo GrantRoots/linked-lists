@@ -65,15 +65,19 @@ class LinkedList {
 
     at(index) {
         let i = 0
-        while (this.node.nextNode !== null) {
+        let originalList = this.node
+        while (this.node !== null) {
             if (index === i) {
-                return this.node.value
+                let at = this.node
+                this.node = originalList
+                console.log(at, 'at')
+                return at
             }
             this.node = this.node.nextNode
-            i += 1
-            // or is it this.value?
+            i++
         }
-        return 'Doesnt Exist'
+        console.log('at doesnt exist')
+        return null
     }
 
     pop() {
@@ -137,5 +141,6 @@ list.prepend('rat')
 list.size()
 list.head()
 list.tail()
+list.at(2)
 
 console.log(list.toString())
