@@ -81,24 +81,36 @@ class LinkedList {
     }
 
     pop() {
-        while (this.node.nextNode !== null) {
-            this.node = this.node.nextNode
+        //?????
+        if (this.node.next === null) {
+            
         }
-        let lastNode = this.node.value
-        while (this.node.nextNode !== lastNode) {
-            this.node = this.node.nextNode
+        let current = this.node;
+        let previous = null;
+
+        // Traverse to the second last node
+        while (current.nextNode) {
+            previous = current;
+            current = current.nextNode;
         }
-        this.node.nextNode === null
+
+        previous.nextNode = null; // Remove the last node
+        console.log(this.node, 'pop')
+        return this.node;
     }
 
     contains(value) {
-        while (this.node.nextNode !== null) {
+        let originalList = this.node
+        while (this.node !== null) {
             if (value === this.node.value) {
+                this.node = originalList
+                console.log('true contains')
                 return true
             }
             this.node = this.node.nextNode
-            // or is it this.value?
         }
+        this.node = originalList
+        console.log('false contains')
         return false
     }
     
@@ -142,5 +154,9 @@ list.size()
 list.head()
 list.tail()
 list.at(2)
+
+list.pop()
+
+list.contains('rat')
 
 console.log(list.toString())
