@@ -7,12 +7,18 @@ class LinkedList {
 
     append(value) {
         let newNode = new Node(value)
+        if (this.node.value === null) {
+            this.node = newNode
+            console.log(this.node)
+            return
+        }
         //get to null in list then append to last item
-        while (this.nextNode !== null) {
-            this.node = this.nextNode
+        while (this.node.nextNode !== null) {
+            this.node = this.node.nextNode
             //this.node.nextNode ?
         }
-        this.nextNode = newNode
+        this.node.nextNode = newNode
+        console.log(this.node)
     }
 
     prepend(value) {
@@ -22,13 +28,15 @@ class LinkedList {
         let newNode = new Node(value)
         newNode.nextNode = this.head.nextNode
         this.head.nextNode = newNode
+
+        //REMAKE!!!
     }
 
     size() {
         let total = 0
-        while (this.nextNode !== null) {
+        while (this.node.nextNode !== null) {
             total += 1
-            this.node = this.nextNode
+            this.node = this.node.nextNode
             // or is it this.value?
         }
 
@@ -40,19 +48,19 @@ class LinkedList {
     }
 
     tail() {
-        while (this.nextNode !== null) {
-            this.node = this.nextNode
+        while (this.node.nextNode !== null) {
+            this.node = this.node.nextNode
         }
         return this.node
     }
 
     at(index) {
         let i = 0
-        while (this.nextNode !== null) {
+        while (this.node.nextNode !== null) {
             if (index === i) {
-                return this.value
+                return this.node.value
             }
-            this.node = this.nextNode
+            this.node = this.node.nextNode
             i += 1
             // or is it this.value?
         }
@@ -60,23 +68,22 @@ class LinkedList {
     }
 
     pop() {
-        while (this.nextNode !== null) {
-            this.node = this.nextNode
+        while (this.node.nextNode !== null) {
+            this.node = this.node.nextNode
         }
-        let lastNode = this.value
-        //this.node.value?
-        while (this.nextNode !== lastNode) {
-            this.node = this.nextNode
+        let lastNode = this.node.value
+        while (this.node.nextNode !== lastNode) {
+            this.node = this.node.nextNode
         }
-        this.nextNode === null
+        this.node.nextNode === null
     }
 
     contains(value) {
-        while (this.nextNode !== null) {
-            if (value === this.value) {
+        while (this.node.nextNode !== null) {
+            if (value === this.node.value) {
                 return true
             }
-            this.node = this.nextNode
+            this.node = this.node.nextNode
             // or is it this.value?
         }
         return false
@@ -84,11 +91,11 @@ class LinkedList {
     
     find(value) {
         let i = 0
-        while (this.nextNode !== null) {
+        while (this.node.nextNode !== null) {
             if (value === this.value) {
                 return i
             }
-            this.node = this.nextNode
+            this.node = this.node.nextNode
             i += 1
             // or is it this.value?
         }
@@ -97,8 +104,9 @@ class LinkedList {
 
     toString() {
         let list = ''
-        while (this.nextNode !== null) {
-            list += `( ${this.value} ) -> `
+        while (this.node.nextNode !== null) {
+            list += `( ${this.node.value} ) -> `
+            this.node = this.node.nextNode
         }
         list += 'null'
         return list
@@ -107,15 +115,14 @@ class LinkedList {
 
 class Node {
     constructor(value) {
-        this.value === value
-        this.nextNode === null
+        this.value = value
+        this.nextNode = null
     }
 }
 
-//const list = new LinkedList();
+const list = new LinkedList();
 
-//console.log('test')
-
-//list.append("dog");
+list.append("dog");
+list.append("cat");
 
 //console.log(list.toString())
