@@ -53,10 +53,14 @@ class LinkedList {
     }
 
     tail() {
+        let originalList = this.node
         while (this.node.nextNode !== null) {
             this.node = this.node.nextNode
         }
-        return this.node
+        let tail = this.node
+        this.node = originalList
+        console.log(tail, 'tail')
+        return tail
     }
 
     at(index) {
@@ -131,7 +135,7 @@ list.append("dog");
 list.append("cat");
 list.prepend('rat')
 list.size()
-
 list.head()
+list.tail()
 
 console.log(list.toString())
