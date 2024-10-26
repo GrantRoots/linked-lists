@@ -33,12 +33,15 @@ class LinkedList {
 
     size() {
         let total = 0
+        if (this.node.value === null) {
+            return total
+        }
         while (this.node.nextNode !== null) {
             total += 1
             this.node = this.node.nextNode
-            // or is it this.value?
         }
-
+        total++
+        console.log(total)
         return total
     }
 
@@ -123,7 +126,8 @@ const list = new LinkedList();
 
 list.append("dog");
 list.append("cat");
-
 list.prepend('rat')
+
+list.size()
 
 console.log(list.toString())
