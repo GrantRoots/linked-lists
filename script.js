@@ -26,10 +26,9 @@ class LinkedList {
         //make new node.next = head.next
         //make this.head.nextNode = this newNode
         let newNode = new Node(value)
-        newNode.nextNode = this.head.nextNode
-        this.head.nextNode = newNode
-
-        //REMAKE!!!
+        newNode.nextNode = this.node
+        this.node = newNode
+        console.log(this.node)
     }
 
     size() {
@@ -108,7 +107,7 @@ class LinkedList {
             list += `( ${this.node.value} ) -> `
             this.node = this.node.nextNode
         }
-        list += 'null'
+        list += `( ${this.node.value} ) -> null`
         return list
     }
 }
@@ -125,4 +124,6 @@ const list = new LinkedList();
 list.append("dog");
 list.append("cat");
 
-//console.log(list.toString())
+list.prepend('rat')
+
+console.log(list.toString())
