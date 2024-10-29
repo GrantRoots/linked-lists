@@ -155,13 +155,14 @@ const list = new LinkedList();
 list.append("dog");
 list.append("cat");
 list.append('bird')
-// list.prepend('rat')
-// list.size()
-// list.head()
-// list.tail()
-// list.at(2)
-//list.pop()
-// list.contains('rat')
-// list.find('dog')
-
+list.prepend('rat')
+list.size()
+list.head()
+list.tail()
+list.at(2)
+list.pop()
+list.contains('rat')
+list.find('dog')
 console.log(list.toString())
+
+export default LinkedList
