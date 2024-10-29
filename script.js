@@ -81,9 +81,8 @@ class LinkedList {
     }
 
     pop() {
-        //?????
         if (this.node.next === null) {
-            
+            return null;
         }
         let current = this.node;
         let previous = null;
@@ -116,14 +115,18 @@ class LinkedList {
     
     find(value) {
         let i = 0
-        while (this.node.nextNode !== null) {
-            if (value === this.value) {
+        let originalList = this.node
+        while (this.node) {
+            if (value === this.node.value) {
+                console.log(i, 'find')
+                this.node = originalList
                 return i
             }
             this.node = this.node.nextNode
-            i += 1
-            // or is it this.value?
+            i++
         }
+        this.node = originalList
+        console.log('null find')
         return null
     }
 
@@ -154,9 +157,9 @@ list.size()
 list.head()
 list.tail()
 list.at(2)
-
 list.pop()
-
 list.contains('rat')
+
+list.find('dog')
 
 console.log(list.toString())
