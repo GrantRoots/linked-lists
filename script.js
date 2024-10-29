@@ -12,12 +12,14 @@ class LinkedList {
             console.log(this.node)
             return
         }
-        //get to null in list then append to last item
-        while (this.node.nextNode !== null) {
-            this.node = this.node.nextNode
-            //this.node.nextNode ?
+        let current = this.node;
+        let previous = null;
+
+        while (current.nextNode) {
+            previous = current;
+            current = current.nextNode;
         }
-        this.node.nextNode = newNode
+        current.nextNode = newNode
         console.log(this.node)
     }
 
@@ -152,14 +154,14 @@ const list = new LinkedList();
 
 list.append("dog");
 list.append("cat");
-list.prepend('rat')
-list.size()
-list.head()
-list.tail()
-list.at(2)
-list.pop()
-list.contains('rat')
-
-list.find('dog')
+list.append('bird')
+// list.prepend('rat')
+// list.size()
+// list.head()
+// list.tail()
+// list.at(2)
+//list.pop()
+// list.contains('rat')
+// list.find('dog')
 
 console.log(list.toString())
